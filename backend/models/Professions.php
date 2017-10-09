@@ -18,6 +18,7 @@ use yii\db\Expression;
  */
 class Professions extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -37,7 +38,8 @@ class Professions extends \yii\db\ActiveRecord
             [['title'], 'string', 'max' => 255],
         ];
     }
-     /**
+
+    /**
      * auto update time
      */
     public function behaviors()
@@ -51,7 +53,6 @@ class Professions extends \yii\db\ActiveRecord
             ],
         ];
     }
-
 
     /**
      * @inheritdoc
@@ -73,4 +74,5 @@ class Professions extends \yii\db\ActiveRecord
     {
         return $this->hasMany(SurveyProfessionTrans::className(), ['profession_id' => 'id']);
     }
+
 }

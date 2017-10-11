@@ -17,7 +17,9 @@ return [
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',
-            'enableAutoLogin' => false,
+            //'enableAutoLogin' => false,
+            'enableSession' => false,
+            'loginUrl' => null
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -33,13 +35,10 @@ return [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/country',
-                    'tokens' => [
-                        '{id}' => '<id:\\w+>'
-                    ]
-                ]
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/country', 'v1/user']],
+                'OPTIONS v1/user/login' => 'v1/user/login',
+                'POST v1/user/login' => 'v1/user/login',
+                'POST v1/user/signup' => 'v1/user/signup',
             ],
         ]
     ],
